@@ -79,6 +79,7 @@ class Provider::Openai < Provider
         response_chunk = collected_chunks.find { |chunk| chunk.type == "response" }
         response_chunk.data
       else
+        puts "[DEBUG] raw_response: #{raw_response.inspect}"
         ChatParser.new(raw_response).parsed
       end
     end
