@@ -10,6 +10,8 @@
   class="h-full text-primary overflow-hidden lg:overflow-auto font-sans <%= @os %>">
   <head>
     <%= render "layouts/shared/head" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <%= yield :head %>
   </head>
 
