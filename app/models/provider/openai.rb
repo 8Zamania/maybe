@@ -61,6 +61,9 @@ class Provider::Openai < Provider
         nil
       end
 
+      puts "[DEBUG] Orión llegó hasta el request con modelo: #{model}"
+      raise "¡Orión sí entró al bloque, pero OpenAI la está ghosteando!"
+    
       raw_response = client.responses.create(parameters: {
         model: model,
         input: chat_config.build_input(prompt),
