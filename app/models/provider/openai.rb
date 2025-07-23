@@ -61,9 +61,6 @@ class Provider::Openai < Provider
         nil
       end
 
-      puts "[DEBUG] Orión llegó hasta el request con modelo: #{model}"
-      raise "¡Orión sí entró al bloque, pero OpenAI la está ghosteando!"
-    
       raw_response = client.responses.create(parameters: {
         model: model,
         input: chat_config.build_input(prompt),
@@ -79,7 +76,6 @@ class Provider::Openai < Provider
         response_chunk = collected_chunks.find { |chunk| chunk.type == "response" }
         response_chunk.data
       else
-        puts "[DEBUG] raw_response: #{raw_response.inspect}"
         ChatParser.new(raw_response).parsed
       end
     end
